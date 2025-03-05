@@ -6,7 +6,7 @@ public abstract class Character {
     private String description;
     private byte[] image;
     private byte[] video;
-    private String group;
+    private String team;
     private String type;
     private String superPower;
     private String weakness;
@@ -19,7 +19,7 @@ public abstract class Character {
         this.description = description;
         this.image = image;
         this.video = video;
-        this.group = group;
+        this.team = group;
         this.type = type;
         this.superPower = superPower;
         this.weakness = weakness;
@@ -47,11 +47,11 @@ public abstract class Character {
         this.description = description;
     }
 
-    public String getGroup() {
-        return group;
+    public String getTeam() {
+        return team;
     }
-    public void setGroup(String group) {
-        this.group = group;
+    public void setTeam(String team) {
+        this.team = team;
     }
 
     public String getType() {
@@ -88,12 +88,11 @@ public abstract class Character {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
-                ", group='" + group + '\'' +
+                ", group='" + team + '\'' +
                 ", type='" + type + '\'' +
                 ", superPower='" + superPower + '\'' +
                 ", weakness='" + weakness + '\'' +
                 ", threatLevel=" + threatLevel +
                 '}';
     }
-
 }

@@ -1,0 +1,35 @@
+CREATE TABLE IF NOT EXISTS User (
+	id INTEGER PRIMARY KEY AUTOINCREMENT,
+	username TEXT NOT NULL,
+	email TEXT UNIQUE NOT NULL,
+	hash_psw TEXT NOT NULL,
+	isAdmin BOOLEAN DEFAULT 0
+);
+
+CREATE TABLE IF NOT EXISTS Character (
+	id INTEGER PRIMARY KEY AUTOINCREMENT,
+	name TEXT NOT NULL,
+	description TEXT,
+	group TEXT CHECK (group IN ('MARVEL', 'DC')) NOT NULL,
+	image BLOB NOT NULL,
+	video BLOB,
+	type TEXT CHECK (type IN ('Hero', 'Villain', 'AGENT')) NOT NULL,
+	superpower TEXT,
+	alignment TEXT,
+	weakness TEXT,
+	threatLevel INTEGER
+);
+
+CREATE TABLE IF NOT EXISTS Album (
+	id INTEGER PRIMARY KEY AUTOINCREMENT,
+	id_user INTEGER NOT NULL,
+	FOREIGN KEY (id_user) REFERENCES user(id) ON DELETE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS Album_Figure (
+	id_album INTEGER NOT NULL,
+	id_character INTEGER NOT NULL,
+	PRIMARY KEY (id_album, id_character),
+	FOREIGN KEY (id_album) REFERENCES album(id) ON DELETE CASCADE,
+	FOREIGN KEY (id_character) REFERENCES character(id) ON DELETE CASCADE
+);
